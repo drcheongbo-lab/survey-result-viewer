@@ -1,106 +1,24 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<title>설문지</title>
-
-<style>
-body {
-  font-family: Arial, sans-serif;
-}
-
-.modal {
-  display: block;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-}
-
-.modal-content {
-  width: 90%;
-  max-width: 800px;
-  height: 90%;
-  margin: 3% auto;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-header-tabs {
-  display: flex;
-  background: #f1f5f9;
-}
-
-.tab-btn {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.tab-btn.active {
-  background: #fff;
-  font-weight: bold;
-  border-bottom: 2px solid #2563eb;
-}
-
-.tab-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.iframe-container {
-  flex: 1;
-}
-
-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.footer {
-  padding: 10px;
-  text-align: right;
-  border-top: 1px solid #ddd;
-}
-</style>
-</head>
-
-<body>
-
 <div class="modal">
   <div class="modal-content">
 
-    <!-- 탭 -->
     <div class="modal-header-tabs">
-      <button class="tab-btn active" data-target="symptom"
-        onclick="switchTab('symptom')">
-        증상 설문
+      <button class="tab-btn active" id="symptomTab">
+        ① 증상 설문
       </button>
-
-      <button class="tab-btn" data-target="mind"
-        onclick="switchTab('mind')" disabled>
-        심리 설문
+      <button class="tab-btn" id="mindTab" disabled>
+        ② 심리 설문
       </button>
     </div>
 
-    <!-- 설문 iframe -->
-    <div class="iframe-container">
-      <iframe id="questionnaireFrame" style="width:100%; height:100vh; border:none;"></iframe>
+    <div class="modal-body">
+      <p id="stepDescription">
+        증상 설문을 먼저 작성해주세요.
+      </p>
     </div>
-    
 
-    <!-- 하단 버튼 -->
     <div class="footer">
-      <button onclick="goNextStep()">다음</button>
+      <button onclick="openSymptomForm()">증상 설문 시작</button>
     </div>
 
   </div>
 </div>
-
-<script src="survey.js"></script>
-</body>
-</html>

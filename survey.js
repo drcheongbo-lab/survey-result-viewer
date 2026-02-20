@@ -32,3 +32,21 @@ function openMindForm() {
     "width=900,height=800"
   );
 }
+
+window.addEventListener("focus", () => {
+  const symptomDone = localStorage.getItem("symptomDone");
+  const mindDone = localStorage.getItem("mindDone");
+
+  // 증상 설문 완료 → 심리 설문 버튼 활성화
+  if (symptomDone === "true") {
+    lockMindTab(false);
+  }
+
+  // 심리 설문까지 완료했다고 가정
+  if (symptomDone === "true") {
+    localStorage.setItem("mindDone", "true");
+
+    document.getElementById("afterSurveyMsg").style.display = "block";
+    document.getElementById("resultBtn").style.display = "inline-block";
+  }
+});

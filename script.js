@@ -1,23 +1,34 @@
-const symptomFormURL = "https://forms.gle/https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?usp=header";
-const mindFormURL = "https://forms.gle/https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?usp=header";
+// 구글 설문지 주소
+const symptomFormURL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform";
 
-let symptomDone = false;
+const mindFormURL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform";
 
+// 증상 설문 열기
 function openSymptomForm() {
-  window.open(symptomFormURL, "_blank");
-
-  // UX상 “완료했다고 가정”하고 다음 버튼 활성
-  symptomDone = true;
-
-  document.getElementById("mindTab").disabled = false;
-  document.getElementById("stepDescription").innerText =
-    "증상 설문이 완료되었습니다. 다음으로 심리 설문을 진행해주세요.";
+  window.open(
+    symptomFormURL,
+    "_blank",
+    "width=900,height=800"
+  );
 }
 
+// 증상 설문 완료 확인
+function confirmSymptomDone() {
+  // 현실적인 방식: 사용자 확인
+  const ok = confirm("증상 설문을 모두 제출하셨습니까?");
+  if (!ok) return;
+
+  document.getElementById("mindBtn").disabled = false;
+  alert("심리 설문을 진행하실 수 있습니다.");
+}
+
+// 심리 설문 열기
 function openMindForm() {
-  if (!symptomDone) return;
-
-  window.open(mindFormURL, "_blank");
+  window.open(
+    mindFormURL,
+    "_blank",
+    "width=900,height=800"
+  );
 }
-
-

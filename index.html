@@ -1,24 +1,79 @@
-<div class="modal">
-  <div class="modal-content">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>설문 진행</title>
 
-    <div class="modal-header-tabs">
-      <button class="tab-btn active" id="symptomTab">
-        ① 증상 설문
-      </button>
-      <button class="tab-btn" id="mindTab" disabled>
-        ② 심리 설문
-      </button>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f8fafc;
+}
+
+.container {
+  max-width: 600px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.step {
+  margin-bottom: 25px;
+}
+
+button {
+  padding: 12px 18px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.notice {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>설문 진행</h1>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <h3>① 증상 설문</h3>
+    <button onclick="openSymptomForm()">증상 설문 작성하기</button>
+    <div class="notice">
+      설문 제출 후 이 화면으로 돌아와 주세요.
     </div>
+  </div>
 
-    <div class="modal-body">
-      <p id="stepDescription">
-        증상 설문을 먼저 작성해주세요.
-      </p>
-    </div>
+  <button onclick="confirmSymptomDone()">다음 단계로</button>
 
-    <div class="footer">
-      <button onclick="openSymptomForm()">증상 설문 시작</button>
-    </div>
+  <hr style="margin:30px 0">
 
+  <!-- STEP 2 -->
+  <div class="step">
+    <h3>② 심리 설문</h3>
+    <button id="mindBtn" onclick="openMindForm()" disabled>
+      심리 설문 작성하기
+    </button>
   </div>
 </div>
+
+<script src="survey.js"></script>
+</body>
+</html>

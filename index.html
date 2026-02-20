@@ -1,25 +1,102 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>설문 결과 조회</title>
+  <meta charset="UTF-8" />
+  <title>설문지</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      line-height: 1.6;
+    }
+    .step {
+      display: none;
+    }
+    .step.active {
+      display: block;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 6px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+    }
+  </style>
 </head>
 <body>
 
-<h2>설문 결과 조회</h2>
+  <!-- 공통 정보 -->
+  <h1>설문지</h1>
 
-<p>설문에 응답한 날짜와 이름을 입력하세요.</p>
+  <label>
+    이름
+    <input type="text" id="name" />
+  </label>
 
-<input type="date" id="date"><br><br>
-<input type="text" id="name" placeholder="이름"><br><br>
+  <!-- STEP 1 : 증상 설문 -->
+  <div id="step1" class="step active">
+    <h2>① 증상 설문</h2>
 
-<button onclick="loadResult()">결과 조회</button>
+    <label>
+      현재 가장 불편한 증상은 무엇인가요?
+      <textarea id="symptom_main"></textarea>
+    </label>
 
-<hr>
+    <label>
+      증상이 시작된 시점은 언제인가요?
+      <input type="text" id="symptom_start" />
+    </label>
 
-<div id="result"></div>
+    <button onclick="goToStep2()">다음</button>
+  </div>
 
-<script src="script.js"></script>
+  <!-- STEP 2 : 심리 설문 -->
+  <div id="step2" class="step">
+    <h2>② 심리 설문</h2>
+
+    <label>
+      요즘 스트레스 정도는 어떤가요?
+      <input type="text" id="stress_level" />
+    </label>
+
+    <label>
+      감정적으로 가장 힘든 점은 무엇인가요?
+      <textarea id="emotion_issue"></textarea>
+    </label>
+
+    <button onclick="submitSurvey()">제출</button>
+  </div>
+
+  <script>
+    function goToStep2() {
+      const name = document.getElementById("name").value.trim();
+      if (!name) {
+        alert("이름을 입력해 주세요.");
+        return;
+      }
+
+      document.getElementById("step1").classList.remove("active");
+      document.getElementById("step2").classList.add("active");
+    }
+
+    function submitSurvey() {
+      alert("설문 제출 (다음 단계에서 Apps Script 연동)");
+    }
+  </script>
+
 </body>
 </html>

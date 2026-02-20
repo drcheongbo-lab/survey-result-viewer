@@ -53,3 +53,55 @@ function loadResult() {
       `;
     });
 }
+/* ======================
+   설문 단계 전환 제어
+====================== */
+const symptomFormURL = "https://forms.gle/R3JidGJhV2Dvsy6Y8";
+const mindFormURL = "https://forms.gle/R3BP9guu4xXhJzYi9";
+
+function openSurveyModal() {
+  document.getElementById("appointmentModal").style.display = "block";
+  switchTab("symptom");
+  lockMindTab(true);
+}
+
+function switchTab(type) {
+  const iframe = document.getElementById("questionnaireFrame");
+  document.querySelectorAll(".tab-btn").forEach(btn =>
+    btn.classList.remove("active")
+  );
+
+  if (type === "symptom") {
+    iframe.src = symptomFormURL;
+    document
+      .querySelector('[data-target="symptom"]')
+      .classList.add("active");
+  }
+
+  if (type === "mind") {
+    iframe.src = mindFormURL;
+    document
+      .querySelector('[data-target="mind"]')
+      .classList.add("active");
+  }
+}
+
+function lockMindTab(lock) {
+  const mindBtn = document.querySelector('[data-target="mind"]');
+  if (!mindBtn) return;
+
+  if (lock) {
+    mindBtn.disabled = true;
+    mindBtn.style.opacity = "0.4";
+    mindBtn.style.cursor = "not-allowed";
+  } else {
+    mindBtn.disabled = false;
+    mindBtn.style.opacity = "1";
+    mindBtn.style.cursor = "pointer";
+  }
+}
+
+function goNextStep() {
+  lockMindTab(false);
+  switchTab("mind");
+}

@@ -8,7 +8,7 @@ function loadResult() {
   }
 
   const url =
-    "https://script.google.com/macros/s/여기에_웹앱URL/exec" +
+    "https://script.google.com/macros/s/AKfycbxU6GYREgD7dgXAmW7Jt2JUP9xbC5FbpYVWVBxTgFkaJSfsuZOTYAuL3bTA2Lax9Nof/exec" +
     `?date=${date}&name=${encodeURIComponent(name)}`;
 
   fetch(url)

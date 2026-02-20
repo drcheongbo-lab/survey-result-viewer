@@ -20,17 +20,22 @@ function switchTab(type) {
 
   if (type === "symptom") {
     iframe.src = symptomFormURL;
-    document.querySelector('[data-target="symptom"]').classList.add("active");
+    document
+      .querySelector('[data-target="symptom"]')
+      .classList.add("active");
   }
 
   if (type === "mind") {
     iframe.src = mindFormURL;
-    document.querySelector('[data-target="mind"]').classList.add("active");
+    document
+      .querySelector('[data-target="mind"]')
+      .classList.add("active");
   }
 }
 
 function lockMindTab(lock) {
   const btn = document.querySelector('[data-target="mind"]');
+  if (!btn) return;
   btn.disabled = lock;
 }
 

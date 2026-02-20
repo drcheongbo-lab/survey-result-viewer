@@ -46,6 +46,11 @@ body {
   border-bottom: 2px solid #2563eb;
 }
 
+.tab-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .iframe-container {
   flex: 1;
 }
@@ -76,7 +81,8 @@ iframe {
         증상 설문
       </button>
 
-      <button class="tab-btn" data-target="mind" disabled>
+      <button class="tab-btn" data-target="mind"
+        onclick="switchTab('mind')" disabled>
         심리 설문
       </button>
     </div>

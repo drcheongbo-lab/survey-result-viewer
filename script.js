@@ -1,45 +1,23 @@
-// 반드시 embed URL 사용
-const symptomFormURL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?embedded=true";
+const symptomFormURL = "https://forms.gle/https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?usp=header";
+const mindFormURL = "https://forms.gle/https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?usp=header";
 
-const mindFormURL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?embedded=true";
+let symptomDone = false;
 
-window.addEventListener("DOMContentLoaded", () => {
-  // 페이지 열리자마자 증상 설문 로드
-  switchTab("symptom");
-  lockMindTab(true);
-});
+function openSymptomForm() {
+  window.open(symptomFormURL, "_blank");
 
-function switchTab(type) {
-  const iframe = document.getElementById("questionnaireFrame");
+  // UX상 “완료했다고 가정”하고 다음 버튼 활성
+  symptomDone = true;
 
-  document.querySelectorAll(".tab-btn").forEach(btn =>
-    btn.classList.remove("active")
-  );
-
-  if (type === "symptom") {
-    iframe.src = symptomFormURL;
-    document
-      .querySelector('[data-target="symptom"]')
-      .classList.add("active");
-  }
-
-  if (type === "mind") {
-    iframe.src = mindFormURL;
-    document
-      .querySelector('[data-target="mind"]')
-      .classList.add("active");
-  }
+  document.getElementById("mindTab").disabled = false;
+  document.getElementById("stepDescription").innerText =
+    "증상 설문이 완료되었습니다. 다음으로 심리 설문을 진행해주세요.";
 }
 
-function lockMindTab(lock) {
-  const btn = document.querySelector('[data-target="mind"]');
-  if (!btn) return;
-  btn.disabled = lock;
+function openMindForm() {
+  if (!symptomDone) return;
+
+  window.open(mindFormURL, "_blank");
 }
 
-function goNextStep() {
-  lockMindTab(false);
-  switchTab("mind");
-}
+

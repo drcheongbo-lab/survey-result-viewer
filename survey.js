@@ -7,11 +7,15 @@ const mindFormURL =
 
 // 증상 설문 열기
 function openSymptomForm() {
+  localStorage.setItem("symptomDone", "false");
+  localStorage.setItem("mindDone", "false");
+  
   window.open(
     symptomFormURL,
     "_blank",
     "width=900,height=800"
   );
+  alert("설문 제출 후 이 화면으로 돌아와 주세요.");
 }
 
 // 증상 설문 완료 확인
@@ -26,6 +30,7 @@ function confirmSymptomDone() {
 
 // 심리 설문 열기
 function openMindForm() {
+  localStorage.setItem("symptomDone", "true");
   window.open(
     mindFormURL,
     "_blank",

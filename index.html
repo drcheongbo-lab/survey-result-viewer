@@ -11,8 +11,8 @@ body {
 }
 
 .container {
-  max-width: 600px;
-  margin: 80px auto;
+  max-width: 700px;
+  margin: 50px auto;
   background: #fff;
   padding: 30px;
   border-radius: 8px;
@@ -25,7 +25,11 @@ h1 {
 }
 
 .step {
-  margin-bottom: 25px;
+  margin-bottom: 40px;
+}
+
+.step h3 {
+  margin-bottom: 12px;
 }
 
 button {
@@ -42,7 +46,14 @@ button:disabled {
 .notice {
   font-size: 14px;
   color: #555;
-  margin-top: 10px;
+  margin-top: 8px;
+}
+
+iframe {
+  width: 100%;
+  height: 500px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 </style>
 </head>
@@ -52,32 +63,28 @@ button:disabled {
 <div class="container">
   <h1>설문 진행</h1>
 
-  <!-- STEP 1 -->
+  <!-- STEP 1: 증상 설문 -->
   <div class="step">
     <h3>① 증상 설문</h3>
-    <button onclick="openSymptomForm()">증상 설문 작성하기</button>
-    <div class="notice">
-      설문 제출 후 이 화면으로 돌아와 주세요.
-    </div>
+    <iframe id="symptomFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?embedded=true"></iframe>
+    <div class="notice">증상 설문은 위에서 작성 후 제출해 주세요.</div>
   </div>
 
-  <button onclick="confirmSymptomDone()">다음 단계로</button>
-
-  <hr style="margin:30px 0">
-
-  <!-- STEP 2 -->
+  <!-- STEP 2: 심리 설문 -->
   <div class="step">
     <h3>② 심리 설문</h3>
-    <button id="mindBtn" onclick="openMindForm()" disabled>
-      심리 설문 작성하기
-    </button>
+    <iframe id="mindFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?embedded=true"></iframe>
+    <div class="notice">심리 설문도 위에서 작성 후 제출해 주세요.</div>
   </div>
-  
-  <!-- 결과 확인 섹션 -->
-  <div id="resultSection" style="display:none; margin-top:30px;">
-    <h2>검사 결과</h2>
-    <div id="result">결과를 불러오는 중입니다…</div>
+
+  <!-- STEP 3: 결과 확인 -->
+  <div class="step">
+    <h3>③ 검사 결과</h3>
+    <button onclick="loadResult()">검사 결과 확인</button>
+    <div id="resultSection" style="margin-top:20px;">결과를 불러오는 중입니다…</div>
   </div>
+
+</div>
 
 <script src="survey.js"></script>
 </body>

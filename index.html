@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-  max-width: 700px;
+  max-width: 900px;
   margin: 50px auto;
   background: #fff;
   padding: 30px;
@@ -21,21 +21,25 @@ body {
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
-}
-
-.step {
   margin-bottom: 40px;
 }
 
-.step h3 {
-  margin-bottom: 12px;
+.step {
+  margin-bottom: 50px;
+}
+
+iframe {
+  width: 100%;
+  height: 700px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
 button {
   padding: 12px 18px;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 button:disabled {
@@ -46,44 +50,53 @@ button:disabled {
 .notice {
   font-size: 14px;
   color: #555;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
-iframe {
-  width: 100%;
-  height: 500px;
-  border: 1px solid #ddd;
+#resultSection {
+  display: none;
+  margin-top: 30px;
+  background: #f1f5f9;
+  padding: 20px;
   border-radius: 6px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
   <h1>설문 진행</h1>
 
   <!-- STEP 1: 증상 설문 -->
   <div class="step">
     <h3>① 증상 설문</h3>
-    <iframe id="symptomFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?embedded=true"></iframe>
-    <div class="notice">증상 설문은 위에서 작성 후 제출해 주세요.</div>
+    <iframe id="symptomFrame" 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?embedded=true">
+    </iframe>
+    <div class="notice">증상 설문을 작성 후 제출하면 '제출 완료' 메시지가 표시됩니다.</div>
+    <button id="symptomDoneBtn" onclick="confirmSymptomDone()">제출 완료 확인</button>
   </div>
 
   <!-- STEP 2: 심리 설문 -->
   <div class="step">
     <h3>② 심리 설문</h3>
-    <iframe id="mindFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?embedded=true"></iframe>
-    <div class="notice">심리 설문도 위에서 작성 후 제출해 주세요.</div>
+    <iframe id="mindFrame" 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?embedded=true">
+    </iframe>
+    <div class="notice">심리 설문을 작성 후 제출하면 '제출 완료' 메시지가 표시됩니다.</div>
+    <button id="mindDoneBtn" onclick="confirmMindDone()" disabled>제출 완료 확인</button>
   </div>
 
   <!-- STEP 3: 결과 확인 -->
   <div class="step">
-    <h3>③ 검사 결과</h3>
-    <button onclick="loadResult()">검사 결과 확인</button>
-    <div id="resultSection" style="margin-top:20px;">결과를 불러오는 중입니다…</div>
+    <h3>③ 검사 결과 확인</h3>
+    <button onclick="loadResult()">결과 확인하기</button>
+    <div id="resultSection">
+      <h2>검사 결과</h2>
+      <div id="result">결과를 불러오는 중입니다…</div>
+    </div>
   </div>
-
 </div>
 
 <script src="survey.js"></script>

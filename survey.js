@@ -1,35 +1,35 @@
 const GAS_URL =
-  "https://script.google.com/macros/s/❗여기에_네_배포_URL❗/exec";
+  "https://script.google.com/macros/s/AKfycbxU6GYREgD7dgXAmW7Jt2JUP9xbC5FbpYVWVBxTgFkaJSfsuZOTYAuL3bTA2Lax9Nof/exec";
 
-/* ======================
-   결과 조회
-====================== */
 function loadResult() {
-  const name = document.getElementById("nameInput").value.trim();
+  const name = document.getElementById("resultName").value.trim();
   if (!name) {
-    alert("이름을 입력하세요.");
+    alert("이름을 입력해 주세요.");
     return;
   }
-
-  document.getElementById("resultSection").style.display = "block";
-  document.getElementById("result").innerText = "결과를 불러오는 중입니다…";
 
   fetch(`${GAS_URL}?name=${encodeURIComponent(name)}`)
     .then(res => res.json())
     .then(data => {
+      const section = document.getElementById("resultSection");
+      const resultBox = document.getElementById("result");
+
+      section.style.display = "block";
+
       if (data.error) {
-        document.getElementById("result").innerText = data.error;
+        resultBox.innerHTML = `<p style="color:red;">${data.error}</p>`;
         return;
       }
 
-      document.getElementById("result").innerHTML = `
-        <p><strong>증상 변증 결과</strong><br>${data.symptom}</p>
-        <hr>
-        <p><strong>심리 검사 결과</strong><br>${data.psychology}</p>
+      resultBox.innerHTML = `
+        <h4>증상 변증 결과</h4>
+        <p>${data.symptom || "결과 없음"}</p>
+
+        <h4>심리 검사 결과</h4>
+        <p>${data.psychology || "결과 없음"}</p>
       `;
     })
     .catch(() => {
-      document.getElementById("result").innerText =
-        "결과를 불러오는 중 오류가 발생했습니다.";
+      alert("결과를 불러오는 중 오류가 발생했습니다.");
     });
 }

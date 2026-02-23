@@ -76,22 +76,20 @@ button {
     <div class="notice">설문 제출 후 결과 확인이 가능합니다.</div>
   </div>
 
-  <!-- STEP 3 -->
-  <div class="step">
-    <h3>③ 검사 결과 확인</h3>
+  <!-- STEP 3: 결과 확인 -->
+<div class="step">
+  <h3>③ 검사 결과 확인</h3>
 
-    <label>
-      이름 입력:
-      <input type="text" id="nameInput" style="padding:8px; width:200px;">
-    </label>
-    <br>
+  <label>
+    검사 결과를 확인하려면 이름을 입력하세요:
+    <input type="text" id="resultName" placeholder="이름 입력">
+  </label>
 
-    <button onclick="loadResult()">결과 확인하기</button>
+  <button onclick="loadResult()">결과 확인하기</button>
 
-    <div id="resultSection">
-      <h2>검사 결과</h2>
-      <div id="result"></div>
-    </div>
+  <div id="resultSection">
+    <h2>검사 결과</h2>
+    <div id="result"></div>
   </div>
 </div>
 

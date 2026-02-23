@@ -42,11 +42,6 @@ button {
   margin-top: 10px;
 }
 
-button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
 .notice {
   font-size: 14px;
   color: #555;
@@ -59,7 +54,6 @@ button:disabled {
   background: #f1f5f9;
   padding: 20px;
   border-radius: 6px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
 </style>
 </head>
@@ -68,33 +62,35 @@ button:disabled {
 <div class="container">
   <h1>설문 진행</h1>
 
-  <!-- STEP 1: 증상 설문 -->
+  <!-- STEP 1 -->
   <div class="step">
     <h3>① 증상 설문</h3>
-    <iframe id="symptomFrame" 
-            src="https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?embedded=true">
-    </iframe>
-    <div class="notice">증상 설문을 작성 후 제출하면 '제출 완료' 메시지가 표시됩니다.</div>
-    <button id="symptomDoneBtn" onclick="confirmSymptomDone()">제출 완료 확인</button>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?embedded=true"></iframe>
+    <div class="notice">설문 제출 후 아래 단계로 진행하세요.</div>
   </div>
 
-  <!-- STEP 2: 심리 설문 -->
+  <!-- STEP 2 -->
   <div class="step">
     <h3>② 심리 설문</h3>
-    <iframe id="mindFrame" 
-            src="https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?embedded=true">
-    </iframe>
-    <div class="notice">심리 설문을 작성 후 제출하면 '제출 완료' 메시지가 표시됩니다.</div>
-    <button id="mindDoneBtn" onclick="confirmMindDone()">제출 완료 확인</button>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?embedded=true"></iframe>
+    <div class="notice">설문 제출 후 결과 확인이 가능합니다.</div>
   </div>
 
-  <!-- STEP 3: 결과 확인 -->
+  <!-- STEP 3 -->
   <div class="step">
     <h3>③ 검사 결과 확인</h3>
+
+    <label>
+      이름 입력:
+      <input type="text" id="nameInput" style="padding:8px; width:200px;">
+    </label>
+    <br>
+
     <button onclick="loadResult()">결과 확인하기</button>
+
     <div id="resultSection">
       <h2>검사 결과</h2>
-      <div id="result">결과를 불러오는 중입니다…</div>
+      <div id="result"></div>
     </div>
   </div>
 </div>

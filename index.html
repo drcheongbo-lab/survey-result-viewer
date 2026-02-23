@@ -39,7 +39,7 @@ button {
   padding: 12px 18px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .notice {
@@ -48,12 +48,21 @@ button {
   margin-top: 6px;
 }
 
+/* 결과 영역 */
 #resultSection {
   display: none;
   margin-top: 30px;
   background: #f1f5f9;
   padding: 20px;
   border-radius: 6px;
+}
+
+/* 로딩 메시지 */
+#loadingMessage {
+  display: none;
+  margin-top: 15px;
+  font-size: 15px;
+  color: #555;
 }
 </style>
 </head>
@@ -65,31 +74,42 @@ button {
   <!-- STEP 1 -->
   <div class="step">
     <h3>① 증상 설문</h3>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?embedded=true"></iframe>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?embedded=true">
+    </iframe>
     <div class="notice">설문 제출 후 아래 단계로 진행하세요.</div>
   </div>
 
   <!-- STEP 2 -->
   <div class="step">
     <h3>② 심리 설문</h3>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?embedded=true"></iframe>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?embedded=true">
+    </iframe>
     <div class="notice">설문 제출 후 결과 확인이 가능합니다.</div>
   </div>
 
-  <!-- STEP 3: 결과 확인 -->
-<div class="step">
-  <h3>③ 검사 결과 확인</h3>
+  <!-- STEP 3 -->
+  <div class="step">
+    <h3>③ 검사 결과 확인</h3>
 
-  <label>
-    검사 결과를 확인하려면 이름을 입력하세요:
-    <input type="text" id="resultName" placeholder="이름 입력">
-  </label>
+    <label>
+      검사 결과를 확인하려면 이름을 입력하세요:
+      <input type="text" id="resultName" placeholder="이름 입력">
+    </label>
 
-  <button onclick="loadResult()">결과 확인하기</button>
+    <br>
 
-  <div id="resultSection">
-    <h2>검사 결과</h2>
-    <div id="result"></div>
+    <button onclick="loadResult()">결과 확인하기</button>
+
+    <!-- 조회 중 표시 -->
+    <div id="loadingMessage">결과 확인중입니다....</div>
+
+    <!-- 결과 출력 -->
+    <div id="resultSection">
+      <h2>검사 결과</h2>
+      <div id="result"></div>
+    </div>
   </div>
 </div>
 

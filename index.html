@@ -114,7 +114,9 @@ button:disabled {
       현재 몸의 상태를 파악하기 위한 설문입니다.<br>
       정답은 없으며 약 3~5분 정도 소요됩니다.
     </div>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?embedded=true"></iframe>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdAHOgM2fYvcFpMp0Ryx7jF_aa2ACNAVxWUwj4l8-c5c0wCoQ/viewform?embedded=true">
+    </iframe>
     <div class="notice">설문 제출 후 아래 심리 설문으로 이동해 주세요.</div>
   </div>
 
@@ -124,7 +126,9 @@ button:disabled {
     <div class="guide">
       현재 심리 상태와 스트레스 반응을 확인하는 검사입니다.
     </div>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?embedded=true"></iframe>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdino89hjtQN9_2QMKzirdguHN6-pSCNUhQ6nKDUHou5lqqGw/viewform?embedded=true">
+    </iframe>
     <div class="notice">모든 설문이 완료되면 아래에서 결과를 확인할 수 있습니다.</div>
   </div>
 
@@ -137,8 +141,14 @@ button:disabled {
       이전에 검사한 경우에도 같은 이름으로 조회할 수 있습니다.
     </div>
 
-    <input type="text" id="resultName" placeholder="이름 입력" style="padding:12px;width:240px;">
+    <input
+      type="text"
+      id="resultName"
+      placeholder="이름 입력"
+      style="padding:12px;width:240px;">
+
     <br><br>
+
     <button id="resultBtn" onclick="loadResult()">결과 확인하기</button>
 
     <div id="loadingText" class="loading" style="display:none;">

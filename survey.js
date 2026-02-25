@@ -14,6 +14,7 @@ function loadResult() {
   const loading = document.getElementById("loadingText");
   const section = document.getElementById("resultSection");
   const symptomBox = document.getElementById("symptomResult");
+  const symptomExplainBox = document.getElementById("symptomExplain"); // ✅ 추가
   const psychologyBox = document.getElementById("psychologyResult");
   const btn = document.getElementById("resultBtn");
 
@@ -21,6 +22,7 @@ function loadResult() {
   section.style.display = "none";
   symptomBox.textContent = "";
   psychologyBox.textContent = "";
+  if (symptomExplainBox) symptomExplainBox.textContent = "";
 
   // 로딩 시작
   loading.style.display = "block";
@@ -36,12 +38,21 @@ function loadResult() {
       if (data.error) {
         symptomBox.innerHTML = `<span style="color:red;">${data.error}</span>`;
         psychologyBox.innerHTML = "";
+        if (symptomExplainBox) symptomExplainBox.innerHTML = "";
         return;
       }
 
+      // ✅ CF (기존 그대로)
       symptomBox.textContent =
         data.symptom || "증상 변증 결과가 없습니다.";
 
+      // ✅ EH (있을 때만 표시)
+      if (symptomExplainBox) {
+        symptomExplainBox.textContent =
+          data.symptomExplain || "추가 설명이 없습니다.";
+      }
+
+      // 심리 결과 (기존 그대로)
       psychologyBox.textContent =
         data.psychology || "심리 검사 결과가 없습니다.";
     })

@@ -189,18 +189,49 @@ button:disabled {
       모든 설문이 완료되면 아래에서 결과를 확인할 수 있습니다.
     </div>
   </div>
-  <!-- 결과 조회 영역 -->
-<div class="result-box" id="resultBox">
-  <div class="result-card">
-    <h4>검사 결과 안내</h4>
-    <p>
-      설문 제출이 완료되면 상담 시 결과를 안내해드립니다.<br>
-      문의가 필요하시면 병원으로 연락 주세요.
-    </p>
+  <!-- STEP 3 -->
+<div class="step">
+  <h3>③ 검사 결과 확인</h3>
+
+  <div class="guide">
+    검사 결과는 <b>이름 기준</b>으로 저장됩니다.<br>
+    이전에 검사한 경우에도 같은 이름으로 조회할 수 있습니다.
+  </div>
+
+  <input type="text" id="resultName" placeholder="이름 입력" style="padding:12px;width:240px;">
+  <br><br>
+
+  <button id="resultBtn" onclick="loadResult()">결과 확인하기</button>
+
+  <div id="loadingText" class="loading" style="display:none;">
+    결과 확인 중입니다...
+  </div>
+
+  <div id="resultSection" class="result-box">
+
+    <h2>검사 결과</h2>
+
+    <div class="result-card">
+      <h4>증상 변증 결과</h4>
+      <p id="symptomResult"></p>
+    </div>
+
+    <div class="result-card">
+      <h4>증상 변증 해설</h4>
+      <p id="symptomExplain" style="white-space: pre-line;"></p>
+    </div>
+
+    <div class="result-card">
+      <h4>심리 검사 결과</h4>
+      <p id="psychologyResult"></p>
+    </div>
+
+    <div class="notice">
+      본 결과는 참고용이며, 보다 정확한 평가는 전문가 상담을 권장드립니다.
+    </div>
+
   </div>
 </div>
-
-</div>
-
+<script src="survey.js"></script>
 </body>
 </html>

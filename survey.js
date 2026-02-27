@@ -1,5 +1,5 @@
 const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbxU6GYREgD7dgXAmW7Jt2JUP9xbC5FbpYVWVBxTgFkaJSfsuZOTYAuL3bTA2Lax9Nof/exec";
+  "https://script.google.com/macros/s/AKfycbySqt10wa0mB1YB8B-E66gjjccsVCpoXAD72cRCYm-5Dmq6gyNlsOx7rywbJeF_AST2/exec";
 
 function loadResult() {
   const nameInput = document.getElementById("resultName");

@@ -89,6 +89,10 @@ function drawPieChart(values) {
   const total = values.reduce((sum, v) => sum + Number(v || 0), 0);
   if (total === 0) return;
 
+  if (pieChartInstance) {
+  pieChartInstance.destroy();
+}
+
   pieChartInstance = new Chart(canvas, {
     type: "pie",
     data: {

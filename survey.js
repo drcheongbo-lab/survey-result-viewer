@@ -92,7 +92,7 @@ function drawPieChart(values) {
   pieChartInstance = new Chart(canvas, {
     type: "pie",
     data: {
-      labels: ["회", "청", "적", "주황", "흑", "녹", "황"],
+      labels: ["金形", "木~火形", "火~土形", "土形(濕)", "水形", "氣形", "水~木形"],
       datasets: [{
         data: values,
         backgroundColor: [

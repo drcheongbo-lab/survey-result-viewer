@@ -1,5 +1,5 @@
 const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbyJFi2UvlLbMtyfjwhU8wGWuC1s9YvHAip5c37f_lNc6DfX2WKMXLmiE-LCjEl0Cli8/exec";
+  "https://script.google.com/macros/s/AKfycbyKB7rvQlbFmJW9VuI0E2E_Thh7vsUR9gx_EZH6KRXwPbplWjFnTqycPStTt4UxIkaq/exec";
 
 let pieChartInstance = null; // ✅ 차트 중복 방지용
 

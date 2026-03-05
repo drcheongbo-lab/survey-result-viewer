@@ -39,6 +39,7 @@ function loadResult() {
   fetch(`${GAS_URL}?name=${encodeURIComponent(name)}`)
     .then(res => res.json())
     .then(data => {
+      console.log("서버 응답:", data);
       loading.style.display = "none";
       btn.disabled = false;
       section.style.display = "block";
